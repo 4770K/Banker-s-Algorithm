@@ -2,6 +2,7 @@
 #include "conio.h"
 #include "iostream"
 using namespace std;
+
 typedef struct Max	//资源的最大需求量
 {
 	int m_a;
@@ -37,6 +38,7 @@ struct pr	//定义一个结构
 
 
 char na[5]; //安全序列
+
 void init()  //读入文件"input.txt"
 {
 	cout << "各进程还需要的资源数NEED：" << endl;
