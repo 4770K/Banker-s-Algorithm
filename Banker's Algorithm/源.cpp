@@ -128,5 +128,55 @@ int shq()  //申请资源
 
 void main()
 {
-
+	int flag;
+	char c;
+	cout << "		/***** 银 行 家 算 法 *****/" << endl;
+	cout << "确认已经在\"input.txt\"文档中正确输入各进程的有关信息后按回车键" << endl;
+	getch();
+	init();
+	q.av_a = 10;	//各种资源的数量
+	q.av_b = 5;
+	q.av_c = 7;
+	while (flag)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			q.av_a -= p[i].allocation.a_a;
+			q.av_b -= p[i].allocation.a_b;
+			q.av_c -= p[i].allocation.a_c;
+		}
+		if (fenpei())
+		{
+			cout << "这样分配资源是安全的！" << endl;
+			cout << "其安全序列是：	";
+			for (int k = 0; k < 5; k++)
+			{
+				cout << "-->" << na[k];
+			}
+			cout << endl;
+			cout << "有进程发出 Request 请求向量吗？(Enter y or Y)" << endl;
+			cout << endl;
+			c = getch();
+			if (c == 'y' || c == 'Y')
+			{
+				if (shq())
+				{
+					continue;
+				}
+				else
+				{
+					break;
+				}
+			}
+			else
+			{
+				flag = 0;
+			}
+		}
+		else
+		{
+			flag = 0;
+			cout << "不安全！！" << endl;
+		}
+	}
 }
